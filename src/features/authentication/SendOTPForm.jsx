@@ -4,9 +4,13 @@ import TextField from "../../ui/TextField";
 function SendOTPForm() {
   const [phoneNumber, setPhoneNumber] = useState("");
 
+  const sendOTPHandler = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="bg-secondary-0 p-8 rounded-2xl shadow-md shadow-primary-300">
-      <form className="flex flex-col gap-y-5">
+      <form onSubmit={sendOTPHandler} className="flex flex-col gap-y-5">
         <TextField
           label="شماره موبایل"
           name="phoneNumber"
