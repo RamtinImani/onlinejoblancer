@@ -60,6 +60,53 @@
   --color-error: rgb(255, 71, 87);
 }
 
+/* ===== Components ===== */
+@layer components {
+  .textField--input {
+    @apply w-full px-4 py-3 rounded-xl bg-secondary-0 text-secondary-900 outline-none border-2 border-gray-300 focus:border-primary-500 transition-all focus:shadow-md focus:shadow-primary-100;
+  }
+
+  .btn {
+    @apply px-4 py-2 text-center font-bold rounded-xl cursor-pointer transition-all;
+  }
+
+  .btn--primary {
+    @apply bg-primary-900 text-secondary-0 shadow-md shadow-primary-300 hover:bg-primary-800;
+  }
+
+  .btn--secondary {
+    @apply bg-secondary-600 text-secondary-100;
+  }
+
+  .btn--outline {
+    @apply border border-secondary-700 text-secondary-700;
+  }
+
+  .btn--danger {
+    @apply border border-rose-700 text-rose-700;
+  }
+
+  .badge {
+    @apply inline-block whitespace-nowrap rounded-xl px-2 py-0.5;
+  }
+
+  .badge--primary {
+    @apply bg-primary-900 text-secondary-0;
+  }
+
+  .badge--secondary {
+    @apply bg-secondary-200 text-secondary-600;
+  }
+
+  .badge--success {
+    @apply bg-green-500 text-secondary-0;
+  }
+
+  .badge--danger {
+    @apply bg-red-500 text-secondary-0;
+  }
+}
+
 /* ===== Utilities ===== */
 @utility container {
   margin-inline: auto;
