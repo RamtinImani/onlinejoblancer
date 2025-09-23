@@ -1,13 +1,10 @@
-import { useState } from "react";
 import TextField from "../../ui/TextField";
 import { useMutation } from "@tanstack/react-query";
 import { getOtp } from "../../services/authService";
 import toast from "react-hot-toast";
 import Loader from "../../ui/Loader";
 
-function SendOTPForm({ setStep }) {
-  const [phoneNumber, setPhoneNumber] = useState("");
-
+function SendOTPForm({ setStep, phoneNumber, onChangePhoneNumber }) {
   //! get otp mutation
   const { data, isPending, error, mutateAsync } = useMutation({ mutationFn: getOtp });
 
@@ -29,7 +26,7 @@ function SendOTPForm({ setStep }) {
           label="شماره موبایل"
           name="phoneNumber"
           value={phoneNumber}
-          onChange={(event) => setPhoneNumber(event.target.value)}
+          onChange={onChangePhoneNumber}
         />
         <button type="submit" className="btn btn--primary">
           {isPending ? <Loader /> : "ارسال کد تایید"}
