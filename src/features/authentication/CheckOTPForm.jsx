@@ -13,7 +13,7 @@ function CheckOTPForm({ phoneNumber, onBack, onResendOTP }) {
   const navigate = useNavigate();
 
   //! check otp mutation
-  const { data, isPending, error, mutateAsync } = useMutation({ mutationFn: checkOtp });
+  const { isPending, mutateAsync } = useMutation({ mutationFn: checkOtp });
 
   const checkOTPHandler = async (event) => {
     event.preventDefault();
