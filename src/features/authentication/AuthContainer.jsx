@@ -13,7 +13,7 @@ function AuthContainer() {
   const [timer, setTimer] = useState(TIME);
 
   //! get otp mutation
-  const { isPending, mutateAsync } = useMutation({ mutationFn: getOtp });
+  const { data: otpResponse, isPending, mutateAsync } = useMutation({ mutationFn: getOtp });
 
   const sendOTPHandler = async (event) => {
     event.preventDefault();
@@ -46,6 +46,7 @@ function AuthContainer() {
             onResendOTP={sendOTPHandler}
             timer={timer}
             setTimer={setTimer}
+            otpResponse={otpResponse}
           />
         );
       default:
