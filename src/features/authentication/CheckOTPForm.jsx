@@ -7,9 +7,8 @@ import { useNavigate } from "react-router";
 import { HiArrowLeft } from "react-icons/hi";
 import Loader from "../../ui/Loader";
 
-function CheckOTPForm({ phoneNumber, onBack, onResendOTP }) {
+function CheckOTPForm({ phoneNumber, onBack, onResendOTP, timer, setTimer }) {
   const [otp, setOtp] = useState("");
-  const [timer, setTimer] = useState(10);
   const navigate = useNavigate();
 
   //! check otp mutation
