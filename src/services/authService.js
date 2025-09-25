@@ -2,7 +2,7 @@ import http from "./httpService";
 
 //! get OTP from server and send it to the user phoneNumber(data)
 export function getOtp(data) {
-  return http.post("/user/get-otp", data).then(({ data }) => data.data);
+  return http.post("/user/get-otpddd", data).then(({ data }) => data.data);
 }
 //! check OTP based on phoneNumber and OTP input value
 export function checkOtp(data) {
