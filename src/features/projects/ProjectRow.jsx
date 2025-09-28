@@ -1,9 +1,17 @@
+import { TbPencilMinus } from "react-icons/tb";
 import Table from "../../ui/Table";
 import toLocalDateShort from "../../utils/toLocalDateShort";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumber";
 import truncateText from "../../utils/truncateText";
+import { HiOutlineTrash } from "react-icons/hi";
+import Modal from "../../ui/Modal";
+import { useState } from "react";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 function ProjectRow({ project, index }) {
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+
   return (
     <Table.Row>
       <td>{index + 1}</td>
@@ -28,7 +36,40 @@ function ProjectRow({ project, index }) {
           <span className="badge badge--danger">بسته</span>
         )}
       </td>
-      <td>...</td>
+      <td>
+        <div className="flex items-center gap-x-4">
+          <div>
+            <button onClick={() => setIsEditOpen(true)}>
+              <TbPencilMinus className="size-5 text-primary-900" />
+            </button>
+            <Modal
+              title={`ویرایش ${project.title}`}
+              open={isEditOpen}
+              onClose={() => setIsEditOpen(false)}
+            >
+              edit project
+            </Modal>
+          </div>
+
+          <div>
+            <button onClick={() => setIsDeleteOpen(true)}>
+              <HiOutlineTrash className="size-5 text-error" />
+            </button>
+            <Modal
+              title={`حذف ${project.title}`}
+              open={isDeleteOpen}
+              onClose={() => setIsDeleteOpen(false)}
+            >
+              <ConfirmDelete
+                resourceName={project.title}
+                onClose={() => setIsDeleteOpen(false)}
+                onConfirm={() => {}}
+                disabled={false}
+              />
+            </Modal>
+          </div>
+        </div>
+      </td>
       <td>...</td>
     </Table.Row>
   );
