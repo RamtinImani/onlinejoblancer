@@ -109,3 +109,25 @@
 body {
   @apply font-IranYekan min-h-dvh bg-secondary-0;
 }
+
+/* ===== Table ===== */
+table {
+  @apply w-full border-collapse border-spacing-0;
+}
+
+table .title-row {
+  @apply bg-secondary-100;
+}
+
+table td,
+table th {
+  @apply text-right whitespace-nowrap border-b border-secondary-200;
+}
+
+table th {
+  @apply text-sm text-secondary-600 py-2.5 px-4;
+}
+
+table td {
+  @apply text-xs p-4 text-secondary-600;
+}
