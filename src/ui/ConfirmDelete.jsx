@@ -1,4 +1,6 @@
-function ConfirmDelete({ resourceName, onClose, onConfirm, disabled }) {
+import Loader from "./Loader";
+
+function ConfirmDelete({ resourceName, onClose, onConfirm, isDeletingProject, disabled }) {
   return (
     <div>
       <p className="font-bold text-base mb-8 text-wrap">آیا از حذف {resourceName} مطمئن هستید؟</p>
@@ -7,7 +9,7 @@ function ConfirmDelete({ resourceName, onClose, onConfirm, disabled }) {
           لغو
         </button>
         <button onClick={onConfirm} className="btn btn--danger flex-1" disabled={disabled}>
-          تایید
+          {isDeletingProject ? <Loader /> : "تایید"}
         </button>
       </div>
     </div>
