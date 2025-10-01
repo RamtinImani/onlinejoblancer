@@ -8,9 +8,13 @@ function CreateProjectForm({ onClose }) {
     handleSubmit,
   } = useForm();
 
+  const onNewProjectFormSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <div>
-      <form className="flex flex-col gap-y-5">
+      <form className="flex flex-col gap-y-5" onSubmit={handleSubmit(onNewProjectFormSubmit)}>
         <TextField
           label="عنوان پروژه"
           name="title"
@@ -22,6 +26,31 @@ function CreateProjectForm({ onClose }) {
               value: 10,
               message: "حداقل 10 کاراکتر را وارد کنید",
             },
+          }}
+          errors={errors}
+        />
+        <TextField
+          label="توضیحات پروژه"
+          name="description"
+          register={register}
+          required
+          validationSchema={{
+            required: "توضیحات پروژه ضروری است",
+            minLength: {
+              value: 15,
+              message: "حداقل 15 کاراکتر را وارد کنید",
+            },
+          }}
+          errors={errors}
+        />
+        <TextField
+          label="بودجه"
+          name="budget"
+          type="number"
+          register={register}
+          required
+          validationSchema={{
+            required: "بودجه پروژه ضروری است",
           }}
           errors={errors}
         />
