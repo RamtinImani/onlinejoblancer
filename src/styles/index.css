@@ -131,3 +131,28 @@ table th {
 table td {
   @apply text-xs p-4 text-secondary-600;
 }
+
+/* ===== Tag Input ===== */
+.rti--container {
+  --rti-bg: var(--color-secondary-0) !important;
+  --rti-radius: 0.75rem !important;
+  --rti-border: #d1d5dc !important;
+  --rti-s: 0.5rem !important;
+  --rti-tag: var(--color-secondary-500) !important;
+  --rti-tag-remove: var(--color-error) !important;
+  --rti-main: var(--color-primary-500) !important;
+  background-color: var(--rti-bg);
+  border: 2px solid var(--rti-border) !important;
+}
+
+.rti--container .rti--input {
+  @apply bg-secondary-200 text-secondary-800 py-1 px-4 rounded-lg outline-none;
+}
+
+.rti--container:focus-within {
+  @apply border-primary-500! shadow-md! shadow-primary-100! transition-all!;
+}
+
+.rti--tag {
+  @apply text-secondary-100 px-2!;
+}

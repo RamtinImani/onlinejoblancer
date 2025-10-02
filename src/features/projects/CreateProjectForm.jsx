@@ -1,6 +1,9 @@
 import { useForm } from "react-hook-form";
 import TextField from "../../ui/TextField";
 import SelectOption from "../../ui/SelectOption";
+import { useState } from "react";
+import { TagsInput } from "react-tag-input-component";
+import Tags from "../../ui/Tags";
 
 function CreateProjectForm({ onClose }) {
   const {
@@ -8,6 +11,7 @@ function CreateProjectForm({ onClose }) {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const [tags, setTags] = useState([]);
 
   const onNewProjectFormSubmit = (data) => {
     console.log(data);
@@ -57,6 +61,8 @@ function CreateProjectForm({ onClose }) {
         />
 
         <SelectOption label="دسته بندی" name="category" required register={register} options={[]} />
+
+        <Tags label="برچسب ها" name="tags" tags={tags} setTags={setTags} />
 
         <button type="submit" className="btn btn--primary w-full">
           تایید
