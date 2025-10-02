@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import TextField from "../../ui/TextField";
+import SelectOption from "../../ui/SelectOption";
 
 function CreateProjectForm({ onClose }) {
   const {
@@ -54,6 +55,8 @@ function CreateProjectForm({ onClose }) {
           }}
           errors={errors}
         />
+
+        <SelectOption label="دسته بندی" name="category" required register={register} options={[]} />
 
         <button type="submit" className="btn btn--primary w-full">
           تایید
