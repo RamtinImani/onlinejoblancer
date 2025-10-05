@@ -6,20 +6,31 @@ import { TagsInput } from "react-tag-input-component";
 import Tags from "../../ui/Tags";
 import DatePickerField from "../../ui/DatePickerField";
 import useCategories from "../../hooks/useCategories";
+import useCreateProject from "./useCreateProject";
+import Loader from "../../ui/Loader";
 
 function CreateProjectForm({ onClose }) {
   const {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   const [tags, setTags] = useState([]);
   const [date, setDate] = useState(new Date());
   const { categories } = useCategories();
+  const { createProject, isCreatingProject } = useCreateProject();
 
   const onNewProjectFormSubmit = (data) => {
-    console.log(data);
+    const newProject = { ...data, tags, deadline: new Date(date).toISOString() };
+
+    createProject(newProject, {
+      onSuccess: () => {
+        onClose();
+        reset();
+      },
+    });
   };
 
   return (
@@ -78,7 +89,7 @@ function CreateProjectForm({ onClose }) {
         <DatePickerField label="تاریخ تحویل" date={date} setDate={setDate} />
 
         <button type="submit" className="btn btn--primary w-full">
-          تایید
+          {isCreatingProject ? <Loader /> : "تایید"}
         </button>
       </form>
     </div>

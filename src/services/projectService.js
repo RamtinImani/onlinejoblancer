@@ -8,3 +8,7 @@ export function getOwnerProjects() {
 export function removeProject(id) {
   return http.delete(`/project/${id}`).then(({ data }) => data.data);
 }
+//! create new project and post it to the server
+export function createNewProject(data) {
+  return http.post("/project/add", data).then(({ data }) => data.data);
+}
