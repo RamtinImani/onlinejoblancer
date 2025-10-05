@@ -2,35 +2,71 @@ import { useForm } from "react-hook-form";
 import TextField from "../../ui/TextField";
 import SelectOption from "../../ui/SelectOption";
 import { useState } from "react";
-import { TagsInput } from "react-tag-input-component";
 import Tags from "../../ui/Tags";
 import DatePickerField from "../../ui/DatePickerField";
 import useCategories from "../../hooks/useCategories";
 import useCreateProject from "./useCreateProject";
 import Loader from "../../ui/Loader";
+import useEditProject from "./useEditProject";
 
-function CreateProjectForm({ onClose }) {
+function CreateProjectForm({ onClose, projectToEdit = {} }) {
+  const {
+    _id: editId,
+    title,
+    description,
+    budget,
+    category,
+    tags: prevTags,
+    deadline,
+  } = projectToEdit;
+
+  const isEditMode = Boolean(editId);
+
+  let editValues = {};
+
+  if (isEditMode) {
+    editValues = {
+      title,
+      description,
+      budget,
+      category: category._id,
+    };
+  }
+
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm();
+  } = useForm({ defaultValues: editValues });
 
-  const [tags, setTags] = useState([]);
-  const [date, setDate] = useState(new Date());
+  const [tags, setTags] = useState(prevTags || []);
+  const [date, setDate] = useState(new Date(deadline || ""));
   const { categories } = useCategories();
   const { createProject, isCreatingProject } = useCreateProject();
+  const { isEditingProject, editProject } = useEditProject();
 
   const onNewProjectFormSubmit = (data) => {
     const newProject = { ...data, tags, deadline: new Date(date).toISOString() };
 
-    createProject(newProject, {
-      onSuccess: () => {
-        onClose();
-        reset();
-      },
-    });
+    if (isEditMode) {
+      editProject(
+        { id: editId, newProject },
+        {
+          onSuccess: () => {
+            onClose();
+            reset();
+          },
+        }
+      );
+    } else {
+      createProject(newProject, {
+        onSuccess: () => {
+          onClose();
+          reset();
+        },
+      });
+    }
   };
 
   return (
@@ -89,7 +125,7 @@ function CreateProjectForm({ onClose }) {
         <DatePickerField label="تاریخ تحویل" date={date} setDate={setDate} />
 
         <button type="submit" className="btn btn--primary w-full">
-          {isCreatingProject ? <Loader /> : "تایید"}
+          {isCreatingProject || isEditingProject ? <Loading /> : "تایید"}
         </button>
       </form>
     </div>

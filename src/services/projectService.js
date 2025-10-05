@@ -12,3 +12,7 @@ export function removeProject(id) {
 export function createNewProject(data) {
   return http.post("/project/add", data).then(({ data }) => data.data);
 }
+//! update project data
+export function updateProject({ id, newProject }) {
+  return http.patch(`/project/update/${id}`, newProject).then(({ data }) => data.data);
+}
