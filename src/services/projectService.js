@@ -16,3 +16,7 @@ export function createNewProject(data) {
 export function updateProject({ id, newProject }) {
   return http.patch(`/project/update/${id}`, newProject).then(({ data }) => data.data);
 }
+//! toggle project status
+export function toggleProjectStatus({ id, data }) {
+  return http.patch(`/project/${id}`, data).then(({ data }) => data.data);
+}
