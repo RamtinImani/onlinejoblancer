@@ -125,7 +125,7 @@ function CreateProjectForm({ onClose, projectToEdit = {} }) {
         <DatePickerField label="تاریخ تحویل" date={date} setDate={setDate} />
 
         <button type="submit" className="btn btn--primary w-full">
-          {isCreatingProject || isEditingProject ? <Loading /> : "تایید"}
+          {isCreatingProject || isEditingProject ? <Loader /> : "تایید"}
         </button>
       </form>
     </div>
