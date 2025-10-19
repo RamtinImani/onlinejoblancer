@@ -4,6 +4,7 @@ import { toPersianNumbers, toPersianNumbersWithComma } from "../../utils/toPersi
 import truncateText from "../../utils/truncateText";
 import Modal from "../../ui/Modal";
 import { useState } from "react";
+import ChangeProposalStatus from "./ChangeProposalStatus";
 
 const statusStyle = [
   {
@@ -43,7 +44,7 @@ function ProposalRow({ proposal, index }) {
           <HiPencil className="size-5 text-primary-900" />
         </button>
         <Modal title="تغییر وضعیت درخواست" open={open} onClose={() => setOpen(false)}>
-          تغییر وضعیت درخواست
+          <ChangeProposalStatus proposalId={proposal._id} onClose={() => setOpen(false)} />
         </Modal>
       </td>
     </Table.Row>
