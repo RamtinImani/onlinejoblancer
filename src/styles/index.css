@@ -2,6 +2,23 @@
 
 /* ===== Base ===== */
 @layer base {
+  /* ===== Dark Theme Colors ===== */
+  :root.dark-mode {
+    --color-primary-100: rgb(17, 24, 39);
+    --color-primary-300: rgb(31, 41, 55);
+
+    --color-secondary-900: rgb(249, 250, 251);
+    --color-secondary-800: rgb(243, 244, 246);
+    --color-secondary-700: rgb(229, 231, 235);
+    --color-secondary-600: rgb(209, 213, 219);
+    --color-secondary-500: rgb(156, 163, 175);
+    --color-secondary-400: rgb(107, 114, 128);
+    --color-secondary-300: rgb(75, 85, 99);
+    --color-secondary-200: rgb(55, 65, 81);
+    --color-secondary-100: rgb(31, 41, 55);
+    --color-secondary-50: rgb(17, 24, 39);
+    --color-secondary-0: rgb(24, 33, 47);
+  }
   /* ===== Fonts ===== */
   @font-face {
     font-family: "IranYekan";
