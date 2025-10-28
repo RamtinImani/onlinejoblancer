@@ -1,14 +1,13 @@
 import { Outlet } from "react-router";
 import Header from "./Header";
-import Sidebar from "./Sidebar";
 
-function AppLayout() {
+function AppLayout({ children }) {
   return (
     <div className="grid h-screen grid-cols-[15rem_1fr] grid-rows-[auto_1fr]">
       {/* Header */}
       <Header />
-      {/* Sidebar */}
-      <Sidebar />
+      {/* Dynamic Sidebar */}
+      {children}
       {/* Main Content */}
       <div className="bg-secondary-100 p-8 overflow-y-auto">
         <div className="mx-auto max-w-5xl">
