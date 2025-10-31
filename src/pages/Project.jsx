@@ -4,9 +4,9 @@ import useProject from "../features/project/useProject";
 import Loader from "../ui/Loader";
 
 function Project() {
-  const { project, isLoading } = useProject();
+  const { project, isLoadingProject } = useProject();
 
-  if (isLoading) return <Loader />;
+  if (isLoadingProject) return <Loader />;
 
   return (
     <div>

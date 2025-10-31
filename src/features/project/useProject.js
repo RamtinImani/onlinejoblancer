@@ -6,7 +6,7 @@ export default function useProject() {
   //! get project's id from url
   const { id } = useParams();
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading: isLoadingProject } = useQuery({
     queryKey: ["project", id],
     queryFn: () => getProject(id),
     retry: false,
@@ -14,5 +14,5 @@ export default function useProject() {
 
   const { project } = data || {};
 
-  return { project, isLoading };
+  return { project, isLoadingProject };
 }

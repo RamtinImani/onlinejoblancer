@@ -24,3 +24,7 @@ export function toggleProjectStatus({ id, data }) {
 export function getProject(id) {
   return http.get(`/project/${id}`).then(({ data }) => data.data);
 }
+//! get all created projects by owners and admin form server
+export function getAllProjects() {
+  return http.get(`/project/list`).then(({ data }) => data.data);
+}
