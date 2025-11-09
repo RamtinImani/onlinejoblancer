@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getUser } from "../../services/authService";
 
 export default function useUser() {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading: isLoadingUser } = useQuery({
     queryKey: ["user"],
     queryFn: getUser,
     retry: false,
@@ -10,5 +10,5 @@ export default function useUser() {
 
   const { user } = data || {};
 
-  return { isLoading, user };
+  return { user, isLoadingUser };
 }
