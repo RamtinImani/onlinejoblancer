@@ -6,8 +6,8 @@ function FilterDropDown({ filterField, options }) {
   const filterValue = searchParams.get(filterField) || "";
 
   //! Filter DropDown Handler
-  const handleChange = (e) => {
-    searchParams.set(filterField, e.target.value);
+  const handleChange = (event) => {
+    searchParams.set(filterField, event.target.value);
     setSearchParams(searchParams);
   };
 

@@ -1,4 +1,5 @@
 import useCategories from "../../../hooks/useCategories";
+import FilterButtons from "../../../ui/FilterButtons";
 import FilterDropDown from "../../../ui/FilterDropDown";
 
 const sortOptions = [
@@ -12,6 +13,21 @@ const sortOptions = [
   },
 ];
 
+const statusOptions = [
+  {
+    label: "همه",
+    value: "ALL",
+  },
+  {
+    label: "باز",
+    value: "OPEN",
+  },
+  {
+    label: "بسته",
+    value: "CLOSED",
+  },
+];
+
 function ProjectsHeader() {
   const { transformedCategories } = useCategories();
 
@@ -19,6 +35,8 @@ function ProjectsHeader() {
     <div className="flex items-center justify-between text-secondary-700 mb-8">
       <h1 className="font-black text-2xl">لیست پروژه ها</h1>
       <div className="flex items-center gap-x-4">
+        <FilterButtons filterField="status" options={statusOptions} />
+
         <FilterDropDown filterField="sort" options={sortOptions} />
 
         <FilterDropDown
