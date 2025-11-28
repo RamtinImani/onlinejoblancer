@@ -20,3 +20,7 @@ export function getUser() {
 export function logoutUser() {
   return http.post("/user/logout").then(({ data }) => data.data);
 }
+//! get all users profile data
+export function getUsers() {
+  return http.get("/admin/user/list").then(({ data }) => data.data);
+}
