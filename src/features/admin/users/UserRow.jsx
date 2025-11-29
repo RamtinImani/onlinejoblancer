@@ -4,6 +4,7 @@ import { toPersianNumbers } from "../../../utils/toPersianNumber";
 import truncateText from "../../../utils/truncateText";
 import Modal from "../../../ui/Modal";
 import { useState } from "react";
+import ChangeUserStatus from "./ChangeUserStatus";
 
 const statusStyle = [
   {
@@ -41,7 +42,7 @@ function UserRow({ user, index }) {
           <HiPencil className="size-5 text-primary-900" />
         </button>
         <Modal title="تغییر وضعیت کاربر" open={open} onClose={() => setOpen(false)}>
-          change user status component
+          <ChangeUserStatus userId={user._id} onClose={() => setOpen(false)} />
         </Modal>
       </td>
     </Table.Row>
